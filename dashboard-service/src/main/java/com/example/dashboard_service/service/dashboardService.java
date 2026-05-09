@@ -30,7 +30,6 @@ public class dashboardService {
                         .bodyToFlux(transactionDTO.class)
                         .collectList();
 
-        kafkaTemplate.send("transaction-topic", "Load Transaction");
         return transactions
                 .map(list -> {
                     kafkaTemplate.send("transaction-topic", "Load Transaction Success");
