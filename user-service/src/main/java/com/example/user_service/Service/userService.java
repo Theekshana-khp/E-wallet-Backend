@@ -17,10 +17,18 @@ public class userService {
         return userRepo.existsByKeycloakId(keycloakId);
     }
 
-    public Boolean addNewUser(UserDto userDetails){
+    public Boolean addNewUser(UserDto userDetails , String keycloakId){
         userEntity user = new userEntity();
 
         user.setEmail(userDetails.getEmail());
+        user.setFirstName(userDetails.getFirstName());
+        user.setLastName(userDetails.getLastName());
+        user.setPhone(userDetails.getPhone());
+        user.setNic(userDetails.getNic());
+        user.setKeycloakId(keycloakId);
+        user.setDateOfBirth(userDetails.getDateOfBirth());
+        user.setAddress(userDetails.getAddress());
+
         return userRepo.save(user).getId() != null;
     }
 

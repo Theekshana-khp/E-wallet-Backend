@@ -25,9 +25,9 @@ public class userController {
     }
 
     @PostMapping("/add")
-    public ResponseEntity<String> addUser(UserDto user){
-
-        boolean created = userServices.addNewUser(user);
+    public ResponseEntity<String> addUser(@RequestBody UserDto user , @AuthenticationPrincipal Jwt jwt){
+        String keycloakId = jwt.getSubject();
+        boolean created = userServices.addNewUser(user ,keycloakId);
 
         if (!created) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST)
