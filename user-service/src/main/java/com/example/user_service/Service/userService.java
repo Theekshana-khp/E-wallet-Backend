@@ -32,4 +32,10 @@ public class userService {
         return userRepo.save(user).getId() != null;
     }
 
+    public Long getUserIdByKeycloakId(String keycloakId){
+        return userRepo.findByKeycloakId(keycloakId)
+                .map(userEntity::getId)
+                .orElse(null);
+    }
+
 }

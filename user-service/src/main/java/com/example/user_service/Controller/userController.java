@@ -7,11 +7,12 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.oauth2.jwt.Jwt;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @RestController
 @RequestMapping("/user")
 public class userController {
-    private userService userServices;
+    private final userService userServices;
 
     public userController(userService userService){
         this.userServices = userService;
@@ -19,9 +20,17 @@ public class userController {
 
     @GetMapping("/isExist")
     public Boolean isUserExist(@AuthenticationPrincipal Jwt jwt){
-        System.out.println(jwt.getSubject());
         String keycloakId = jwt.getSubject();
         return userServices.isUserAdded(keycloakId);
+    }
+
+    @GetMapping("/getId")
+    public Long getUserId(@RequestParam String keycloakId){
+        if (keycloakId == null || keycloakId.isEmpty()){
+            return null;
+        }
+
+        return userServices.getUserIdByKeycloakId(keycloakId);
     }
 
     @PostMapping("/add")
