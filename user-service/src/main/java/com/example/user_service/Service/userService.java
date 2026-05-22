@@ -33,9 +33,9 @@ public class userService {
     }
 
     public Long getUserIdByKeycloakId(String keycloakId){
-        return userRepo.findByKeycloakId(keycloakId)
-                .map(userEntity::getId)
-                .orElse(null);
+        userEntity entity = userRepo.findByKeycloakId(keycloakId)
+                .orElse(new userEntity());
+        return entity.getId();
     }
 
 }
