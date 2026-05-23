@@ -24,6 +24,15 @@ public class userController {
         return userServices.isUserAdded(keycloakId);
     }
 
+    @GetMapping("/getuser")
+    public UserDto getUser(@RequestParam String keycloakId){
+        if (keycloakId == null || keycloakId.isEmpty()){
+            return null;
+        }
+
+        return userServices.getUserByKeycloakId(keycloakId);
+    }
+
     @GetMapping("/getId")
     public Long getUserId(@RequestParam String keycloakId){
         if (keycloakId == null || keycloakId.isEmpty()){
