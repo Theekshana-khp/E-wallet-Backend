@@ -38,4 +38,22 @@ public class userService {
         return entity.getId();
     }
 
+    public UserDto getUserByKeycloakId(String keycloakId){
+
+        UserDto returnDetails = new UserDto();
+
+        userEntity entity = userRepo.findByKeycloakId(keycloakId)
+                .orElse(new userEntity());
+
+        returnDetails.setEmail(entity.getEmail());
+        returnDetails.setFirstName(entity.getFirstName());
+        returnDetails.setLastName(entity.getLastName());
+        returnDetails.setPhone(entity.getPhone());
+        returnDetails.setNic(entity.getNic());
+        returnDetails.setDateOfBirth(entity.getDateOfBirth());
+        returnDetails.setAddress(entity.getAddress());
+
+        return returnDetails;
+    }
+
 }
