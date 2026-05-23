@@ -1,8 +1,10 @@
 package com.example.dashboard_service.controller;
 
 import com.example.dashboard_service.dto.dashboardDTO;
-import com.example.dashboard_service.dto.transactionDTO;
+
 import com.example.dashboard_service.service.dashboardService;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.oauth2.jwt.Jwt;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -20,8 +22,9 @@ public class dashboardController {
 
 
     @GetMapping
-    public Mono<dashboardDTO> getDashboardData(){
-        return service.getDashboard();
+    public Mono<dashboardDTO> getDashboardData(@AuthenticationPrincipal Jwt jwt){
+        String keycloakId = jwt.getSubject();
+        return service.getDashboard(keycloakId , jwt.getTokenValue());
     }
 
 }

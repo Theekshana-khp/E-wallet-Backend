@@ -9,4 +9,7 @@ import java.util.List;
 @Data
 public class dashboardDTO {
     public List<transactionDTO> transactions;
+    public List<NotificationDto> notifications;
+    public accountDto accounts;
+
 }
