@@ -46,7 +46,7 @@ public class dashboardService {
                                     .collectList();
                     Mono<accountDto> account =
                             webClient.get()
-                                    .uri("http://account-service/accout/getAccountDetails?userId={user}",user)
+                                    .uri("http://account-service/account/getAccountDetails?userId={user}",user)
                                     .retrieve()
                                     .bodyToMono(accountDto.class);
 
