@@ -21,6 +21,7 @@ public class accountService {
 
         returnDetails.setAccountNumber(account.getAccountNumber());
         returnDetails.setBalance(account.getBalance());
+        returnDetails.setOwnerName(account.getOwnerName());
         returnDetails.setCurrency(account.getCurrency());
         returnDetails.setStatus(account.getStatus());
         returnDetails.setCreatedAt(account.getCreatedAt());

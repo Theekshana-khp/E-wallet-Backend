@@ -26,6 +26,9 @@ public class accountEntity {
     @Column(name = "account_number", nullable = false, unique = true, length = 30)
     private String accountNumber;
 
+    @Column(name = "owner_name")
+    private String ownerName;
+
     @Column(name = "balance", precision = 15, scale = 2)
     private BigDecimal balance;
 

@@ -20,7 +20,7 @@ public class transactionService {
                         transaction.getTransactionId(),
                         transaction.getFromWalletId(),
                         transaction.getToWalletId(),
-                        transaction.getReceiverName(),
+                        transaction.getSenderName(),
                         transaction.getReceiverName(),
                         transaction.getAmount(),
                         transaction.getFee(),

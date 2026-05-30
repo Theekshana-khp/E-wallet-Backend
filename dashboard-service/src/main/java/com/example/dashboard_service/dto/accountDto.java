@@ -16,6 +16,7 @@ public class accountDto {
     private Long id;
     private Long userId;
     private String accountNumber;
+    private String ownerName;
     private BigDecimal balance;
     private String currency;
     private String status;
