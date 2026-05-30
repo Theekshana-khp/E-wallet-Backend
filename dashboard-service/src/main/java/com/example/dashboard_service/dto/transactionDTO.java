@@ -17,9 +17,15 @@ public class transactionDTO {
 
     private Long toWalletId;
 
+    private String senderName;
+
+    private String receiverName;
+
     private BigDecimal amount;
 
     private BigDecimal fee;
+
+
 
     private String currency;
 

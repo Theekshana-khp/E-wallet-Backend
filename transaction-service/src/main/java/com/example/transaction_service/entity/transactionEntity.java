@@ -24,6 +24,12 @@ public class transactionEntity {
     @Column(name = "to_wallet_id")
     private Long toWalletId;
 
+    @Column(name = "sender_name")
+    private String senderName;
+
+    @Column(name = "receiver_name")
+    private String receiverName;
+
     private BigDecimal amount;
 
     private BigDecimal fee = BigDecimal.ZERO;

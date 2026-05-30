@@ -14,12 +14,14 @@ public class transactionService {
         this.repository = repository;
     }
 
-    public List<transactionDTO> getAllTransactions() {
-        return repository.findAll().stream()
+    public List<transactionDTO> getAllTransactions(Long userAccount) {
+        return repository.findAllByFromWalletIdOrToWalletId(userAccount, userAccount).stream()
                 .map(transaction -> new transactionDTO(
                         transaction.getTransactionId(),
                         transaction.getFromWalletId(),
                         transaction.getToWalletId(),
+                        transaction.getReceiverName(),
+                        transaction.getReceiverName(),
                         transaction.getAmount(),
                         transaction.getFee(),
                         transaction.getCurrency(),

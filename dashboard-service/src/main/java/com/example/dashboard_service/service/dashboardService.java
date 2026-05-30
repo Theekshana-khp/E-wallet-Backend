@@ -34,7 +34,8 @@ public class dashboardService {
                 .flatMap(user -> {
                     Mono<List<transactionDTO>> transactions =
                             webClient.get()
-                                    .uri("http://transaction-service/transaction")
+                                    .uri("http://transaction-service/transaction/{user}",user)
+                                    .header("Authorization", "Bearer " + token)
                                     .retrieve()
                                     .bodyToFlux(transactionDTO.class)
                                     .collectList();
