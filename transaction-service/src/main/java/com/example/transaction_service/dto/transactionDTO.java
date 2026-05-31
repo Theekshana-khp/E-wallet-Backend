@@ -25,8 +25,6 @@ public class transactionDTO {
 
     private BigDecimal fee;
 
-
-
     private String currency;
 
     private TransactionType type;
